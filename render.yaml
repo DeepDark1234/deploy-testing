@@ -1,10 +1,10 @@
 services:
-  - type: web
-    name: deploy-testing
-    plan: free  # ใช้แผนฟรีแทน starter plan
-    buildCommand: 'docker build -t deploy-testing .'
-    startCommand: 'docker run -p 80:80 deploy-testing'
-    envVars:
+   - type: web
+     name: deploy-testing
+     plan: free  # ใช้แผนฟรีแทน starter plan
+     buildCommand: 'docker build -t deploy-testing .'
+     startCommand: 'docker run -p 80:80 deploy-testing'
+     envVars:
       - key: DB_CONNECTION
         value: mysql
       - key: DB_HOST
