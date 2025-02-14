@@ -1,17 +1,17 @@
 services:
   - type: web
-    name: deploy-testing
-    plan: free  # ใช้แผนฟรีแทน starter plan
-    buildCommand: 'docker build -t deploy-testing .'
-    startCommand: 'docker run -p 80:80 deploy-testing'
+    name: my-laravel-app
+    plan: free  # ใช้แผนฟรี
+    buildCommand: 'composer install --optimize-autoloader --no-dev'
+    startCommand: 'php artisan serve --host=0.0.0.0 --port=80'
     envVars:
       - key: DB_CONNECTION
         value: mysql
       - key: DB_HOST
-        value: deploy-testing.db.render.com
+        value: deploy-testing.db.render.com  # ค่าที่ได้จาก Render
       - key: DB_DATABASE
-        value: deploy-testing
+        value: deploy-testing  # ชื่อฐานข้อมูล
       - key: DB_USERNAME
-        value: nrk
+        value: root  # ชื่อผู้ใช้ฐานข้อมูล
       - key: DB_PASSWORD
-        value: narakorn888999
+        value: narakorn888999  # รหัสผ่านฐานข้อมูล
