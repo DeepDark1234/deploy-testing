@@ -1,10 +1,9 @@
 services:
   - type: web
     name: deploy-testing
-    env: php
     plan: free  # ใช้แผนฟรีแทน starter plan
-    buildCommand: 'composer install --optimize-autoloader --no-dev'
-    startCommand: 'php artisan serve --host=0.0.0.0 --port=80'
+    buildCommand: 'docker build -t deploy-testing .'
+    startCommand: 'docker run -p 80:80 deploy-testing'
     envVars:
       - key: DB_CONNECTION
         value: mysql
